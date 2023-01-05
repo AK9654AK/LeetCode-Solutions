@@ -24,3 +24,21 @@ public:
         
     }
 };
+
+
+
+
+//Another aproach to save space of the hash map;
+// int numJewelsInStones(string jewels, string stones) {
+//         int cnt = 0;
+//         vector<int> hash(100, 0);   //can be changed to 58
+        
+//         for(char it : jewels)
+//             hash[(int)(it-65)]++;
+        
+//         for(char it : stones)
+//             if(hash[(int)(it-65)] > 0)
+//                 cnt++;
+        
+//         return cnt;
+//     }
