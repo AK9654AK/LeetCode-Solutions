@@ -3,32 +3,7 @@ public:
     
    
         
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+     
 //                                                   //I have take  2  2 number set in order to solv3 this problem 
 //         int rev;
 //         int digit;
