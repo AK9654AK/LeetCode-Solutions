@@ -9,7 +9,12 @@ public:
         
         while(x!=0){
             
-            if(y>INT_MAX/10 || y<INT_MIN/10){   // To check if it is overflowing..
+            if(y>INT_MAX/10 || y<INT_MIN/10){   // To check if it is overflowing..   // Line 19: Char 20: runtime error: signed integer overflow: 964632435 * 10 cannot be represented in type 'int' (solution.cpp)
+                                                                                    //SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:28:20
+                                                                               //It is showing this error when /10 is not done;
+                
+                
+                
                 return 0;
             }
             else{
