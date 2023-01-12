@@ -85,14 +85,55 @@ public:
         return v;
         }
         
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//         vector<int> spiralOrder(vector<vector<int>>& matrix) {
+//     vector<int> res;
+//     if (matrix.empty()) return res;
+//     const int nx[] = {0, 1, 0, -1};
+//     const int ny[] = {1, 0, -1, 0};
+//     int x = 0, y = -1;
+//     int m = matrix.size(), n = matrix[0].size();
+//     int i = 0;
+    
+//     while (m > 0 && n>0) {
+//         int k;
+//         if (i%2 == 0) k = n, m--;
+//         else k = m, n--;
+            
+//         while (k--) {
+//             x += nx[i]; y += ny[i];
+//             res.push_back(matrix[x][y]);
+//         }
+        
+//         i = (i+1)%4; //direction
+//     }
+    
+//     return res;
+// }
+// variable i control the direction of next movement, nx and ny holds the offset of next step
         
         
         
         
         
         
-        
-        
+    
+    
+    
+    
+    
+    
+    
         
         
         
@@ -146,6 +187,41 @@ public:
         
         
         
+    
+    
+    
+    
+//     Traverse the matrix in the spiral order by keeping four variables: rs for the first row, re for the last row, cs for the first column and ce for the last column.
+
+// Complexity
+// Time complexity: 0(n^2)
+// Space complexity: 0(1)
+// Code
+// class Solution {
+// public:
+//     vector<int> spiralOrder(vector<vector<int>>& matrix) {
+//         vector<int>res;
+//         if(matrix.size() == 0) 
+//         return res;
+//         int rs = 0, re = matrix.size() - 1, cs = 0, ce = matrix[0].size() - 1;
+//         while(rs <= re && cs <= ce)
+//         {
+//             for(int i = cs; i <= ce; i++) 
+//              res.push_back(matrix[rs][i]);
+//             rs++;
+//             for(int i = rs; i <= re; i++) 
+//              res.push_back(matrix[i][ce]);
+//             ce--;
+//             for(int i = ce; i >= cs && rs <= re; i--) 
+//              res.push_back(matrix[re][i]);
+//             re--;
+//             for(int i = re; i >= rs && cs <= ce; i--) 
+//              res.push_back(matrix[i][cs]);
+//             cs++;
+//         }
+//         return res;
+//     }
+// };
         
         
         
