@@ -5,9 +5,9 @@ public:
        
         int profit=0;
         
-        int minimum=prices[0];
+        int minimum=INT_MAX;
         
-        for(int i=1;i<prices.size();i++){ 
+        for(int i=0;i<prices.size();i++){ 
             
             
             
