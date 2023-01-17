@@ -8,6 +8,8 @@ public:
         
         while(i<n){
             
+            //////////////////////https://www.youtube.com/watch?v=RqxIXM6eyiY
+            
             
             auto it=mp.find(s[i]);
             if(it==mp.end()){   //if element is not in mp
