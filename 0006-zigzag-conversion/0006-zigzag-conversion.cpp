@@ -5,7 +5,7 @@ public:
         int n=numRows;
        if(n<=1)return s;
         // string str="";
-        vector<string>str(numRows,"");
+        vector<string>str(n,"");
         int row=0;int step=1;
         for(int i=0;i<s.size();i++){
             str[row]+=s[i];
