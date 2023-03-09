@@ -42,3 +42,18 @@ public:
         return head;
     }
 };
+/////////////////////////////////////////////To do in O(1)//////////////////
+
+      ListNode *fast = head, *slow = head;
+while(fast != NULL && fast->next !=NULL){
+fast = fast->next->next;
+slow = slow->next;
+if (fast == slow){slow = head;  //////   O(1) solution 
+while (slow!=fast) {
+    slow = slow->next;
+    fast = fast->next;
+}
+return slow;
+}                 
+}
+return NULL;
