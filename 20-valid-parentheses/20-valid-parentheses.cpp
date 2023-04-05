@@ -2,7 +2,7 @@ class Solution {
 public:
     bool isValid(string s) {
         
-        if(s.size()%2==1)return false;
+        // if(s.size()%2==1)return false;
         stack<char>st;
         
         
