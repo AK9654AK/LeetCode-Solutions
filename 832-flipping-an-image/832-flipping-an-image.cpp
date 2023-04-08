@@ -18,14 +18,18 @@ public:
       
 //         return image;
         
-        
-    for(int i = 0; i < r; i++) {
-        for(int j = 0; j < c/2; j++) {
-            int temp = image[i][j];
-            image[i][j] = image[i][c-j-1];
-            image[i][c-j-1] = temp;
+     for(int st = 0; st < r; st++) {
+        int left = 0;
+        int right = c-1;
+        while(left < right) {
+            int temp = image[st][left];
+            image[st][left] = image[st][right];
+            image[st][right] = temp;
+            left++;
+            right--;
         }
     }
+
         
     
     for(int i = 0; i < r; i++) {
