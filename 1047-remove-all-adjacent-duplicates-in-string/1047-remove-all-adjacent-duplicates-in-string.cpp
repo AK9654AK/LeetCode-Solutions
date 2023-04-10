@@ -8,6 +8,12 @@ public:
            if(stk.empty()){
                 stk.push(c);
             }else{
+               
+// if(!stk.empty()&& c== stk.top()){
+//             stk.pop();
+//         } else {
+//             stk.push(c);
+//         }
                 if(stk.top()!=c)stk.push(c);
                else if(!stk.empty() && stk.top()==c) stk.pop();
                else if(stk.empty())stk.push(c);
@@ -27,7 +33,7 @@ public:
         
 //     stack<char> stk;
 //     for(auto c:s){
-//         if(!stk.empty()&& c== stk.top()){
+//        // if(!stk.empty()&& c== stk.top()){
 //             stk.pop();
 //         } else {
 //             stk.push(c);
