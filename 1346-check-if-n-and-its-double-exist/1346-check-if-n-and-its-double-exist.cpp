@@ -1,19 +1,24 @@
 class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {
+       int i = 0;
+    int j = 0;
+    
+     for(;i<arr.size()-1;){
+         if(arr[i]==arr[j]*2&&i!=j&&i>=0){
+             return true;
+         }
         
-        bool check=true;
-        for(int i=0;i<arr.size()-1;i++){
-            for(int j=0;j<arr.size();j++){
-                if(i!=j &&arr[i]==2*arr[j]){
-                    
-                    check=false;
-                    break;
-                }
-            }
+         if(j<arr.size()-1){
+             j++;
+          } 
+
+        else {
+            i++;
+            j = 0;
         }
-        
-        if(check==false)return true;
-        return false;
+     }
+    return false;
+    
     }
 };
