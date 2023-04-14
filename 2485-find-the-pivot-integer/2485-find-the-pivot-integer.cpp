@@ -14,9 +14,10 @@ public:
    
         
 
-        int sum=n*(n+1)/2;
-        if(floor(sqrt(sum))==ceil(sqrt(sum)))
-            return sqrt(sum);
+        double sum=sqrt(n*(n+1)/2);
+        
+        if(floor(sum)==ceil(sum))
+            return sum;
         return -1;
 
     }
