@@ -11,7 +11,7 @@ vector<int> vec;
             if(isdigit(s[i])){
                 n=0;
                if(isdigit(s[i])){
-                while(i<s.length() && isdigit(s[i])){
+                while(isdigit(s[i])){
                     n=n*10+(s[i]-'0');
                     i++;
                 }
