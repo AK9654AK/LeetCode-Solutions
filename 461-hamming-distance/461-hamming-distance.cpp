@@ -44,8 +44,8 @@ public:
         int n=x^y;
         int answer=0;
         while(n){
-            answer++;
-            n=n&n-1;
+           answer+=n%2;
+            n/=2;
         }
     
         return answer;
