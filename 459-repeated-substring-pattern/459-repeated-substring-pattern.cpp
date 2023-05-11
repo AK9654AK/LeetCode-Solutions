@@ -1,9 +1,11 @@
 class Solution {
 public:
     bool repeatedSubstringPattern(string s) {
-        string check=s+s;
-        check=check.substr(1,check.size()-2);
-        return check.find(s)!=string::npos;
+        string temp=s+s;
+        
+        
+        temp=temp.substr(1,temp.size()-2);
+        return temp.find(s)!=string::npos;
         
     }
 };
