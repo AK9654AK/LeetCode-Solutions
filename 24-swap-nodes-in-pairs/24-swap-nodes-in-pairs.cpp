@@ -11,19 +11,19 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-      if(!head || !head->next) return head; //If there are less than 2 nodes in the given nodes, then no need to do anything just return the list as it is.
+      if(!head || !head->next) return head; 
 		
-        ListNode* dummyNode = new ListNode();
-        ListNode* prevNode=dummyNode;
-        ListNode* currNode=head;
-        while(currNode && currNode->next){
-            prevNode->next = currNode->next;
-            currNode->next = prevNode->next->next;
-            prevNode->next->next = currNode;
-            prevNode=currNode;
-            currNode=currNode->next;
+        ListNode* dummy = new ListNode();
+        ListNode* prev=dummy;
+        ListNode* curr=head;
+        while(curr && curr->next){
+            prev->next=curr->next;
+            curr->next=prev->next->next;
+            prev->next->next = curr;
+            prev=curr;
+            curr=curr->next;
         }
-        return dummyNode->next;
+        return dummy->next;
     }
     // forSwappingValues:ListNode *curr=head;
     //     while(curr != NULL && curr->next!=NULL) {
