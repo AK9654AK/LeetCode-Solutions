@@ -13,11 +13,7 @@ public:
         // y4 <= y1 when R1 is above R2 and they do not intersect
         if (y2 <= y3 || y4 <= y1)
              return false;
-        
-        // Pathetic conditions added for when the rectangle is just a line
-        if(x1 == x2 || x3 == x4 || y1 == y2 || y3 == y4)
-             return false;
-        
+
         return true;
     }
 };
