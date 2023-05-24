@@ -8,38 +8,10 @@ public:
         int sec=2;
         
         for(int i=3;i<=n;i++){
-            
             int third=first+sec;
             first=sec;
             sec=third;
-            
-            
         }
         return sec;
-        
-        
-        
-    }
-    
-    
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }    
 };
