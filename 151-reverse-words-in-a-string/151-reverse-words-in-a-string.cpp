@@ -3,9 +3,9 @@ public:
     string reverseWords(string s){
         
          while(s.size()>0 and s[0]==' ')            
-            s.erase(s.begin());
+            s.erase(s.begin(),s.begin()+1);
         while(s.size()>0 and s[s.size()-1]==' ')
-            s.erase(s.begin()+s.size()-1);
+            s.erase(s.end()-1,s.end());
         if(s.size()==0)
             return s;
         for(int i=0;i<s.size()-1;){
