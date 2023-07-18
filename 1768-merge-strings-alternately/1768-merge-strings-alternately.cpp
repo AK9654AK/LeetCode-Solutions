@@ -9,23 +9,15 @@ public:
         
         while(i<word1.size()||j<word2.size()){
             if(i<word1.size()){
-                ans.push_back(word1[i]);
-                i++;
+                ans.push_back(word1[i++]);
+                // i++;
             }
             if(j<word2.size()){
-                ans.push_back(word2[j]);
-                j++;
+                ans.push_back(word2[j++]);
+                // j++;
             }
         }
         
-//         while(i<word1.size()){
-//             ans.push_back(word1[i]);
-//             i++;
-//         }
-//           while(j<word2.size()){
-//             ans.push_back(word2[j]);
-//               j++;
-//         }
         
         return ans;
     }
