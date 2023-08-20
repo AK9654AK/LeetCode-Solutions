@@ -94,15 +94,14 @@ class Solution{
     /*You are required to complete this method*/
     int minDepth(Node *root) {
         
-        if(root==NULL)return 0;
-          int minl=minDepth(root->left)+1;
-        int minr=minDepth(root->right)+1;
-        if(root->left==NULL)return minr;
-        if(root->right==NULL)return minl;
-        
-      
-        
-        return min(minl,minr);
+       if(root==NULL)return 0;
+       int l=minDepth(root->left)+1;
+       int r=minDepth(root->right)+1;
+       
+       if(root->left==NULL)return r;
+       if(root->right==NULL)return l;
+       
+       return min(l,r);
     }
 };
 
