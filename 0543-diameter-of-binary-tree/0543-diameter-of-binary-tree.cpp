@@ -12,26 +12,27 @@
 class Solution {
 public:
     
-    
-    int check(TreeNode* r,int &maxi){
+    int check(TreeNode 
+              *r,int &maxi){
         
-        if(!r)return 0;
+        if(r==NULL)return 0;
+        int lt=check(r->left,maxi);
+        int rt=check(r->right,maxi);
+        maxi=max(maxi,lt+rt);
         
-        int ld=check(r->left,maxi);
-        int rd=check(r->right,maxi);
         
-        maxi=max(maxi,ld+rd);
-        return max(ld,rd)+1;
+        return 1+max(lt,rt);
     }
     
     
     int diameterOfBinaryTree(TreeNode* root) {
         
+        if(root==NULL)return 0;
         
-        if(!root)return 0;
-        int maxi=-1;
-        int ans=check(root,maxi);
-        
+        int maxi=0;
+        check(root,maxi);
         return maxi;
+        
+        
     }
 };
