@@ -93,15 +93,19 @@ class Solution{
   public:
     /*You are required to complete this method*/
     int minDepth(Node *root) {
+         
+        if(root==NULL)return 0;
+        int left=minDepth(root->left)+1;
+        int right=minDepth(root->right)+1;
         
-       if(root==NULL)return 0;
-       int l=minDepth(root->left)+1;
-       int r=minDepth(root->right)+1;
-       
-       if(root->left==NULL)return r;
-       if(root->right==NULL)return l;
-       
-       return min(l,r);
+        
+        if(root->left==NULL)return right;
+        if(root->right==NULL)return left;
+        
+        
+        
+        return min(left,right);
+        
     }
 };
 
