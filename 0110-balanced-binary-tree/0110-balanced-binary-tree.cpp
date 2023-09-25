@@ -12,21 +12,29 @@
 class Solution {
 public:
     
-    int check(TreeNode* root){
-        if(root==NULL)return 0;
-        int lt=check(root->left);
-        int rt=check(root->right);
+    
+    int check(TreeNode* abhi){
         
-        if(lt==-1 || rt==-1 || abs(rt-lt)>1)return -1;
         
-        return max(rt,lt)+1;
+         if(abhi==NULL)return 0;
+        
+        int l=check(abhi->left);
+        int r=check(abhi->right);
+        
+        
+        if(l==-1 or r==(-1) or abs(l-r)>1)return -1;
+
+        
+        
+        return 1+max(l,r);
     }
     
     
     
+    
     bool isBalanced(TreeNode* root) {
-        if(check(root)==-1)return false;
-        // check(root);
+       
+       if(check(root)==-1)return false;
         return true;
         
     }
