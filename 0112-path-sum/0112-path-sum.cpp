@@ -30,11 +30,11 @@ public:
         int ans=0;
         if(root==NULL)return 0;
         
-        int rsum=targetSum-root->val;
+        // int rsum=targetSum-root->val;
         int lt=hasPathSum(root->left,targetSum-root->val);
         int rt=hasPathSum(root->right,targetSum-root->val);
         
-        if(root->left==NULL and root->right==NULL)return (rsum==0);
+        if(root->left==NULL and root->right==NULL)return (targetSum==root->val);
         
         return lt||rt;
     }
