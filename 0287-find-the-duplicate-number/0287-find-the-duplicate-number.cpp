@@ -3,27 +3,22 @@ public:
     int findDuplicate(vector<int>& nums) {
         
         
-		while(nums[0]!=nums[nums[0]])
-		swap(nums[0],nums[nums[0]]);  //Amazing Solutionn
-		return nums[0];
+        int ans=0;
         
         
-//         int slow=nums[0];
-//         int fast=nums[0];
+        for(int i=0;i<nums.size();i++){
+            
+            int index=abs(nums[i]);
+            
+            if(nums[index]<0)return abs(nums[i]);
+            else nums[index]*=-1;
+            
+            
+            
+        }
         
-//         do{
-//             slow=nums[slow];
-//             fast=nums[nums[fast]];
-//         }while(slow!=fast);
+        return ans;
         
-//         fast=nums[0];   //again initialize
-        
-//         while(slow!=fast){
-//             slow=nums[slow];
-//             fast=nums[fast];
-//         }
-        
-//         return slow;
         
         
     }
