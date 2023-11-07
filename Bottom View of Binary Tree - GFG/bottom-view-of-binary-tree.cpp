@@ -102,14 +102,14 @@ class Solution {
         map<int,int>mpp;
         q.push({root,0});
         while(!q.empty()){
-            root = q.front().first;
-            int vertical = q.front().second;
+            Node* temp = q.front().first;
+            int verti = q.front().second;
             q.pop();
-            mpp[vertical] = root->data;
-            if(root->left)
-                q.push({root->left,vertical - 1});
-            if(root->right)
-                q.push({root->right,vertical + 1});
+            mpp[verti] = temp->data;
+            if(temp->left)
+                q.push({temp->left,verti - 1});
+            if(temp->right)
+                q.push({temp->right,verti + 1});
         }
         for(auto it:mpp)
             ans.push_back(it.second);
