@@ -11,30 +11,29 @@
  */
 class Solution {
 public:
-   vector<int> rightSideView(TreeNode* root) {
-       vector<int>ans;
+    vector<int> rightSideView(TreeNode* root) {
+        
+        vector<int>ans;
         if(root==NULL)return ans;
         
-		queue<TreeNode*>q;
+        queue<TreeNode*>q;
         q.push(root);
         
-		// Level order transversal
-		while(!q.empty()){
-            int s=q.size();
-            int dat=0;
-			
-            for(int i=0;i<s;i++){
-                TreeNode*temp=q.front();
+        while(!q.empty()){
+            int size=q.size();
+            
+            for(int i=0;i<size;i++){
+                TreeNode *temp=q.front();
                 q.pop();
-                dat=temp->val;
-                if(temp->left!=NULL)q.push(temp->left);
-                if(temp->right!=NULL)q.push(temp->right);
+                if(i==size-1){
+                    ans.push_back(temp->val);
+                }
                 
+                if(temp->left)q.push(temp->left);
+                if(temp->right)q.push(temp->right);
             }
-			
-			// Simply push ush the last value
-            ans.push_back(dat);
         }
+        
         return ans;
     }
 };
