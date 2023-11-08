@@ -28,24 +28,20 @@ public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         
         if(root==NULL)return NULL;
-         vector<TreeNode*>pv;
-        vector<TreeNode*>qv;
-        if (!check(root, p, pv) || !check(root, q, qv)) {
-        return NULL; 
-    }
         
-       
+        vector<TreeNode*>pv;
+        vector<TreeNode*>qv;
         check(root,p,pv);
         check(root,q,qv);
         
-        TreeNode* ans=root;
-         int i=0;
-          while(i<min(pv.size(),qv.size())&&pv[i]==qv[i]){
-              ans=pv[i];
-              i++;
-          }
-
-          return ans;
+        TreeNode* ans=NULL;
+        for(int i=0;i<qv.size() and i<pv.size();i++){
+            if(qv[i]==pv[i]){
+                ans=qv[i];
+            }
+        }
+        
+        return ans;
         
         
     }
