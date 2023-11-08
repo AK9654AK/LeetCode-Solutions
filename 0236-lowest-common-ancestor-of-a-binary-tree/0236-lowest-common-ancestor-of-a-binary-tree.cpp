@@ -38,7 +38,7 @@ public:
         for(int i=0;i<qv.size() and i<pv.size();i++){
             if(qv[i]==pv[i]){
                 ans=qv[i];
-            }
+            }else break;
         }
         
         return ans;
