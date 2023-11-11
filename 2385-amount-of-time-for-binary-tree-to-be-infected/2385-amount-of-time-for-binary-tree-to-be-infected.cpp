@@ -39,17 +39,19 @@ public:
         vis[start]=1;
         while(!pq.empty())
         {
-            auto p=pq.front();
+            int node=pq.front().first;
+            int dist=pq.front().second;
             pq.pop();
-            res=max(res,p.second);
-            for(auto x:m[p.first])
+            
+            for(auto x:m[node])
             {
                 if(vis[x]==0)
                 {
                     vis[x]=1;
-                    pq.push({x,p.second+1});
+                    pq.push({x,dist+1});
                 }
             }
+            res=max(res,dist);
         }
         return res;
     }
