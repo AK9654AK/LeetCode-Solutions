@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    TreeNode* getBuildTree(vector<int> &postOrder,int postStart, int postEnd, vector<int> &inOrder, int inStart, int inEnd, map<int,int> &inMap){
+    TreeNode* getBuildTree(vector<int> postOrder,int postStart, int postEnd, vector<int> inOrder, int inStart, int inEnd, map<int,int> &inMap){
         if(postStart>postEnd || inStart >inEnd)   return NULL;
 
         TreeNode* root= new TreeNode(postOrder[postEnd]);
@@ -26,7 +26,7 @@ public:
 
 public:
      TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-         if(inorder.size() != postorder.size()) return NULL;
+         // if(inorder.size() != postorder.size()) return NULL;
         //reverse(postorder.begin(), postorder.end());  // Reverse postorder for easier traversal
         map<int, int> inMap;
         for (int i = 0; i < inorder.size(); i++) {
