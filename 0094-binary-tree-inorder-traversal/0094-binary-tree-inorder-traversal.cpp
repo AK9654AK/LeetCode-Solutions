@@ -23,7 +23,7 @@ public:
             }
             else{
                 TreeNode *prev=curr->left;
-                while(prev->right and prev->right!=curr){
+                while(prev->right!=NULL and prev->right!=curr){
                     prev=prev->right;
                 }
                 if(prev->right==NULL){
