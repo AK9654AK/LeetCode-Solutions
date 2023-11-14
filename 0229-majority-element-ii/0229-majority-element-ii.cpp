@@ -1,44 +1,41 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        int candidate1 = 0, candidate2 = 0, count1 = 0, count2 = 0;
-
-    for (int num : nums) {
-        if (num == candidate1) {
-            count1++;
-        } else if (num == candidate2) {
-            count2++;
-        } else if (count1 == 0) {
-            candidate1 = num;
-            count1 = 1;
-        } else if (count2 == 0) {
-            candidate2 = num;
-            count2 = 1;
-        } else {
-            count1--;
-            count2--;
+        int ele1,ele2, cnt1=0,cnt2=0;
+        int n=nums.size();
+        // Apply Moore Voting Algo
+        for(int i=0;i<n;i++){
+            if(cnt1==0 && nums[i]!=ele2){
+                cnt1=1;
+                ele1=nums[i];
+            }
+            else if(cnt2==0 && nums[i]!=ele1){
+                cnt2=1;
+                ele2=nums[i];
+            }
+            else if(ele1==nums[i])
+                cnt1++;
+            else if(ele2==nums[i])
+                cnt2++;
+            else{
+                cnt1--;
+                cnt2--;
+            }
         }
-    }
+        cnt1=0,cnt2=0;
+        // check count
 
-    count1 = 0;
-    count2 = 0;
-
-    for (int num : nums) {
-        if (num == candidate1) {
-            count1++;
-        } else if (num == candidate2) {
-            count2++;
+        for(int i=0;i<n;i++){
+            if(nums[i]==ele1){
+                cnt1++;
+            }
+            else if(nums[i]==ele2){
+                cnt2++;
+            }
         }
+        vector<int> ans;
+        if(cnt1>n/3)    ans.push_back(ele1);
+        if(cnt2>n/3)    ans.push_back(ele2);
+        return ans;
     }
-
-    std::vector<int> result;
-    if (count1 > nums.size() / 3) {
-        result.push_back(candidate1);
-    }
-    if (count2 > nums.size() / 3) {
-        result.push_back(candidate2);
-    }
-
-    return result;
-}
 };
