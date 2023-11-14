@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        int ele1,ele2, cnt1=0,cnt2=0;
+        int ele1=0,ele2=0, cnt1=0,cnt2=0;
         int n=nums.size();
         // Apply Moore Voting Algo
         for(int i=0;i<n;i++){
