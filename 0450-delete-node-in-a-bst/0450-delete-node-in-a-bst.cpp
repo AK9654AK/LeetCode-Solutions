@@ -52,7 +52,7 @@ public:
           else root=root->left;
 
       }
-      else {
+      else if(root->val<=key){
           if(root->right!=NULL && root->right->val==key){
               root->right=deleter(root->right);
               break;
