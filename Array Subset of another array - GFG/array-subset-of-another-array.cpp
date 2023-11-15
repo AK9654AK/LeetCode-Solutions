@@ -30,11 +30,12 @@ int main() {
 
 string isSubset(int a1[], int a2[], int n, int m) {
     
-   unordered_map<int,int>mp;
-   for(int i=0;i<n;i++)mp[a1[i]]++;
-   for(int i=0;i<m;i++){if(mp[a2[i]]==0)return "No";mp[a2[i]]--;}
-   
-   return "Yes";
-    
-    
+  sort(a1,a1+n);
+  sort(a2,a2+m);
+   int i=0;int j=0;
+  while(i<n and j<m){
+      if(a1[i]==a2[j])j++;
+      i++;
+  }
+  if(j==m)return "Yes";return "No";
 }
