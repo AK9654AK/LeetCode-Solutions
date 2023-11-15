@@ -20,10 +20,10 @@ public:
         
         
         kthSmallest(root->left,k);
-        
+        {
             count++;
             if(count==k)ans=root->val;
-            
+        }
         
         kthSmallest(root->right,k);
    
