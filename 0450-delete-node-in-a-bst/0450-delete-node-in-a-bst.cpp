@@ -41,25 +41,26 @@ public:
         
         
         
-        TreeNode*temp=root;
-      while(root){
-      if(root->val>key){
-          if(root->left!=NULL && root->left->val==key){
-              root->left=deleter(root->left);
-              break;
-
-          }
-          else root=root->left;
-
-      }
-      else if(root->val<=key){
-          if(root->right!=NULL && root->right->val==key){
-              root->right=deleter(root->right);
-              break;
-          }
-          else root=root->right;
-      }
-    }
-    return temp;
+        
+        while(root!=NULL){
+            if(root->val>key){
+                if(root->left!=NULL and root->left->val==key){
+                    root->left=deleter(root->left);
+                    break;
+                } else root=root->left;
+            }
+            else if(root->val<=key){
+                if(root->right!=NULL and root->right->val==key)
+                {
+                    root->right=deleter(root->right);
+                    break;
+                }
+                 else root=root->right;                
+            }
+                
+        }
+            
+        
+        return dummy;
     }
 };
