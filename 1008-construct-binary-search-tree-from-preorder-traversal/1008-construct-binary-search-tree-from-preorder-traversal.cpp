@@ -32,7 +32,7 @@ public:
                         current = current->left;
                     }
                 }
-                else{   // If vector value is greater than current tree node's value
+                else if (preorder[i] > current->val){
                     if (current->right == NULL){ // Add the vector value to tree if spot is available
                         current->right = new TreeNode(preorder[i]);
                         done = true; // Vector value added, therefore break out of while loop
@@ -41,8 +41,8 @@ public:
                         current = current->right;   // No spot available, keep traversing tree
                     }
                 }
-            }
-        }
+            }}
+        
         
         return root;
     }
