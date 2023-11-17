@@ -31,8 +31,6 @@ void utility (TreeNode* root)
     void recoverTree(TreeNode* root) {
         
         utility(root);
-        int temp=first->val;
-        first->val=second->val;
-        second->val=temp;
+        swap(first->val,second->val);
     }
 };
