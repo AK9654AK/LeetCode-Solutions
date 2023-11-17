@@ -11,9 +11,19 @@
  */
 class BSTIterator {
     
-private:
+    
+
     stack<TreeNode*> st;
     bool reverse = true;
+    
+    void pushAll(TreeNode* node) {
+        while(node != NULL) {
+            st.push(node);
+            if(reverse == true) node = node->right;
+            else node = node->left;
+        }
+    }
+    
     
 public:
     BSTIterator(TreeNode* root, bool isReverse) {
@@ -34,13 +44,7 @@ public:
     }
 
 
-    void pushAll(TreeNode* node) {
-        while(node != NULL) {
-            st.push(node);
-            if(reverse == true) node = node->right;
-            else node = node->left;
-        }
-    }
+    
     
 };
 
