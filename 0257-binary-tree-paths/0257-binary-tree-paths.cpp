@@ -12,39 +12,37 @@
 class Solution {
 public:
     
-    void check(TreeNode *r,vector<string>&abhi,string s){
+    void check(TreeNode* root,vector<string>&v,string s){
         
-        if(r==NULL)return;
-       
+        if(root==NULL)return;
         
-        if(r->left==NULL and r->right==NULL){
-            s+=to_string(r->val);
-            abhi.push_back(s);
+        if(root->left==NULL and root->right==NULL){
+            s+=to_string(root->val);
+            v.push_back(s);
             return;
             
+            
         }
-       
         
-         s+=to_string(r->val);
-        s+="->";
-       check(r->left,abhi,s);
-       check(r->right,abhi,s);
+            s+=to_string(root->val);
+            s+="->";
+            
+    
         
-       
+        check(root->left,v,s);
+        check(root->right,v,s);
+        
+        
+        
     }
+    
+    
+    
     vector<string> binaryTreePaths(TreeNode* root) {
-        
-        vector<string>abhi;
-        
-        if(root ==NULL)return abhi;
         string s;
-        
-        
-        check(root,abhi,s);
-        
-        return abhi;
-        
-        
-        
+        vector<string>v;
+        if(root==NULL)return v;
+        check(root,v,s);
+        return v;
     }
 };
