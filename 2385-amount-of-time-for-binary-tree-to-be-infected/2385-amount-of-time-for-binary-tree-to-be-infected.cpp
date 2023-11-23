@@ -12,47 +12,61 @@
 class Solution {
 public:
     int amountOfTime(TreeNode* root, int start) {
-        unordered_map<int,vector<int>> m;
-        unordered_map<int,int> vis;
+        if (!root || (!root->left && !root->right)) return 0;
+
+        unordered_map<TreeNode*, TreeNode*> parent;
+        unordered_map<TreeNode*, bool> visited;
+
+        // Parent mapping
+        TreeNode* target = NULL;
         queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty())//adding neighbours
-        {
-            TreeNode* t=q.front();
+        q.push(root), parent[root] = NULL;
+        while (!q.empty()) {
+            TreeNode* current = q.front();
             q.pop();
-            if(t->left)
-            {
-                m[t->val].push_back(t->left->val);
-                m[t->left->val].push_back(t->val);
-                q.push(t->left);
+
+            if (current->val == start) target = current;
+            if (current->left) {
+                q.push(current->left);
+                parent[current->left] = current;
             }
-            if(t->right)
-            {
-                m[t->val].push_back(t->right->val);
-                m[t->right->val].push_back(t->val);
-                q.push(t->right);
+            if (current->right) {
+                q.push(current->right);
+                parent[current->right] = current;
             }
         }
-        queue<pair<int,int>> pq;
-        pq.push({start,0});
-        int res=0;
-        vis[start]=1;
-        while(!pq.empty())
-        {
-            int node=pq.front().first;
-            int dist=pq.front().second;
-            pq.pop();
-            
-            for(auto x:m[node])
-            {
-                if(vis[x]==0)
-                {
-                    vis[x]=1;
-                    pq.push({x,dist+1});
+
+        // Solve
+        int time = 0;
+        q.push(target);
+        visited[target] = true;
+
+        while (!q.empty()) {
+            int n = q.size();
+            bool flag = false;
+            for (int i = 0; i < n; i++) {
+                TreeNode* current = q.front();
+                q.pop();
+
+                if (current->left && !visited[current->left]) {
+                    flag = true;
+                    q.push(current->left);
+                    visited[current->left] = true;
+                }
+                if (current->right && !visited[current->right]) {
+                    flag = true;
+                    q.push(current->right);
+                    visited[current->right] = true;
+                }
+                if (parent[current] && !visited[parent[current]]) {
+                    flag = true;
+                    q.push(parent[current]);
+                    visited[parent[current]] = true;
                 }
             }
-            res=max(res,dist);
+            if (flag) time++;
         }
-        return res;
+
+        return time;
     }
 };
