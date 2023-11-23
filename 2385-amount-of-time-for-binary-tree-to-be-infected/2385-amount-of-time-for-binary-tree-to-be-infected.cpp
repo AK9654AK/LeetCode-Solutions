@@ -40,7 +40,6 @@ public:
 
     unordered_map<TreeNode*, bool> visited;
     q.push(target);
-        visited[target]=true;
 
     while (!q.empty()) {
         int size = q.size();
@@ -48,6 +47,7 @@ public:
         for (int i = 0; i < size; i++) {
             TreeNode* temp = q.front();
             q.pop();
+           visited[target]=true;
 
             if (temp->left and !visited[temp->left]) {
                 q.push(temp->left);
