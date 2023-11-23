@@ -10,19 +10,18 @@
 class Solution {
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        if(root==NULL)return {};
+        vector<int>ans;
+        if(root==NULL)return ans;
         queue<TreeNode*>q;
         unordered_map<int,TreeNode*>mp;
+        
         q.push(root);
-        vector<int>ans;
+        
         while(!q.empty()){
-            
             int size=q.size();
-            
             for(int i=0;i<size;i++){
                 TreeNode* temp=q.front();
                 q.pop();
-                
                 if(temp->left){
                     mp[temp->left->val]=temp;
                     q.push(temp->left);
@@ -34,38 +33,39 @@ public:
             }
         }
         
-        
-        unordered_map<int,int>visited;
+        unordered_map<int,int>vis;
         q.push(target);
         
-        while(k-- and !q.empty()){
-            int size=q.size();
+        while(!q.empty() and k--){
             
+            
+            int size=q.size();
             for(int i=0;i<size;i++){
                 TreeNode* temp=q.front();
                 q.pop();
-                visited[temp->val]=1;
-                
-                if(temp->left and !visited[temp->left->val]){
+                vis[temp->val]=1;
+                if(temp->left and !vis[temp->left->val]){
                     q.push(temp->left);
-                } 
-                if(temp->right and !visited[temp->right->val]){
+                }
+                if(temp->right and !vis[temp->right->val]){
                     q.push(temp->right);
                 }
-                
-                if(mp[temp->val] and !visited[mp[temp->val]->val]){
-                    q.push(mp[temp->val]);
-                }
-                
+                if (temp->val and mp[temp->val]  && !vis[mp[temp->val]->val]){q.push(mp[temp->val]);
+                    }
             }
+            
+            
+            
+            
         }
         
-        while(!q.empty()){
-            ans.push_back(q.front()->val);
-            q.pop();
-        }
+      while(!q.empty()){
+          ans.push_back(q.front()->val);
+          q.pop();
+      }
         
         return ans;
+        
         
         
     }
