@@ -12,61 +12,62 @@
 class Solution {
 public:
     int amountOfTime(TreeNode* root, int start) {
-        if (!root || (!root->left && !root->right)) return 0;
+    int ans = 0;
+    if (root == NULL) return ans;
+    TreeNode* target = NULL;
+    queue<TreeNode*> q;
+    unordered_map<TreeNode*, TreeNode*> mp;
 
-        unordered_map<TreeNode*, TreeNode*> parent;
-        unordered_map<TreeNode*, bool> visited;
+    q.push(root);
+    // mp[root]=NULL;
+    while (!q.empty()) {
+        int size = q.size();
 
-        // Parent mapping
-        TreeNode* target = NULL;
-        queue<TreeNode*> q;
-        q.push(root), parent[root] = NULL;
-        while (!q.empty()) {
-            TreeNode* current = q.front();
+        for (int i = 0; i < size; i++) {
+            TreeNode* temp = q.front();
+            q.pop();
+            if (temp->val == start) target = temp;
+            if (temp->left) {
+                mp[temp->left] = temp;
+                q.push(temp->left);
+            }
+            if (temp->right) {
+                mp[temp->right] = temp;
+                q.push(temp->right);
+            }
+        }
+    }
+
+    unordered_map<TreeNode*, bool> visited;
+    q.push(target);
+        visited[target]=true;
+
+    while (!q.empty()) {
+        int size = q.size();
+        bool flag = false;
+        for (int i = 0; i < size; i++) {
+            TreeNode* temp = q.front();
             q.pop();
 
-            if (current->val == start) target = current;
-            if (current->left) {
-                q.push(current->left);
-                parent[current->left] = current;
+            if (temp->left and !visited[temp->left]) {
+                q.push(temp->left);
+                flag = true;
+                visited[temp->left] = true;
             }
-            if (current->right) {
-                q.push(current->right);
-                parent[current->right] = current;
+            if (temp->right and !visited[temp->right]) {
+                q.push(temp->right);
+                flag = true;
+                visited[temp->right] = true;
+            }
+            if (mp[temp] and !visited[mp[temp]]) {
+                q.push(mp[temp]);
+                flag = true;
+                visited[mp[temp]] = true;
             }
         }
-
-        // Solve
-        int time = 0;
-        q.push(target);
-        visited[target] = true;
-
-        while (!q.empty()) {
-            int n = q.size();
-            bool flag = false;
-            for (int i = 0; i < n; i++) {
-                TreeNode* current = q.front();
-                q.pop();
-
-                if (current->left && !visited[current->left]) {
-                    flag = true;
-                    q.push(current->left);
-                    visited[current->left] = true;
-                }
-                if (current->right && !visited[current->right]) {
-                    flag = true;
-                    q.push(current->right);
-                    visited[current->right] = true;
-                }
-                if (parent[current] && !visited[parent[current]]) {
-                    flag = true;
-                    q.push(parent[current]);
-                    visited[parent[current]] = true;
-                }
-            }
-            if (flag) time++;
-        }
-
-        return time;
+        if (flag) ans++;
     }
+
+    return ans;
+}
 };
