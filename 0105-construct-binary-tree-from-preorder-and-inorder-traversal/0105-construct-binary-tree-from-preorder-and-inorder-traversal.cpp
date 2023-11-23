@@ -11,34 +11,33 @@
  */
 class Solution {
 public:
-    
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        map<int,int> inList;
-        for(int i=0;i<inorder.size();i++){
-            inList[inorder[i]]=i;
-        }
-        TreeNode* root=buildTrees(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,inList);
-        return root;
+        unordered_map<int,int>mp;
+        for(int i=0;i<inorder.size();i++)mp[inorder[i]]=i;
+        TreeNode* ans=check(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,mp);
+        return ans;
     }
-
-    TreeNode* buildTrees(vector<int> preorder,int preStart,int preEnd,vector<int> inorder,int inStart,int inEnd,map<int,int> &inList){
-
-
-
-        if(preStart>preEnd || inStart>inEnd)return NULL;
-
-        TreeNode* root=new TreeNode(preorder[preStart]);
-
-        int inRoot=inList[preorder[preStart]];
-        int inLeft=inRoot-inStart;
-
-        root->left=buildTrees(preorder,preStart+1,preStart+inLeft,inorder,inStart,inStart+inLeft,inList);
-        root->right=buildTrees(preorder,preStart+inLeft+1,preEnd,inorder,inRoot+1,inEnd,inList);
-
+    
+    
+    TreeNode* check(vector<int> &preorder,int ps,int pe,vector<int>& inorder,int is,int ie,unordered_map<int,int>&mp){
+        
+        if(ps>pe or is>ie)return NULL;
+        TreeNode* root=new TreeNode(preorder[ps]);
+        
+        int inroot=mp[root->val];
+        int leftele=inroot-is;
+        
+        
+        root->left=check(preorder,ps+1,ps+leftele,inorder,is,inroot-1,mp);
+        root->right=check(preorder,ps+leftele+1,pe,inorder,inroot+1,ie,mp);
+        
         return root;
-
+        
+        
+        
     }
-
+    
+    
     
     
     
