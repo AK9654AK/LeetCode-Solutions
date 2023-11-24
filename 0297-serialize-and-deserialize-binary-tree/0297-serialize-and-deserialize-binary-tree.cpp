@@ -10,58 +10,50 @@
 class Codec {
 public:
 
-    
-
-
-     string serialize(TreeNode* root) {
-        // if(root==NULL)return "";
-        // queue<TreeNode*>q;
-        // string s="";
-        // q.push(root);
-        // while(!q.empty()){
-        //     TreeNode* node=q.front();
-        //     q.pop();
-        //     if(node==NULL)s.append("X,");
-        //     else s.append(to_string(node->val)+',');
-        //     if(node!=NULL){
-        //         q.push(node->left);
-        //         q.push(node->right);
-        //     }
-        // }
-          // return s;
-         
-         
-         
-         if(!root) return "X";
-        return to_string(root->val) + "," + serialize(root->left)+ serialize(root->right);
-       
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        if(root==NULL)return "X";
+        string l=serialize(root->left);
+        string r=serialize(root->right);
+        
+        return to_string(root->val)+','+l+r;
     }
 
-    TreeNode* deserialize(string data) {
-        
-        queue<string> q;
-        string s = "";
-        
-        for(auto i : data) {
-            
-            if(i == ',') {
-                q.push(s); s = "";
-            }else if(i == 'X') {
-                q.push("X");
-            }else s += i;
-        }
-        return makeTree(q);
-    }
     
-    TreeNode* makeTree(queue<string> & q) {
+    TreeNode* makeTree(queue<string>&q){
         
-        string s = q.front(); q.pop();
-        if(s == "X") return NULL;
         
-        TreeNode* root = new TreeNode(stoi(s));
-        root->left = makeTree(q);
-        root->right = makeTree(q);
+        string s=q.front();
+        q.pop();
+        if(s=="X")return NULL;
+        TreeNode* root=new TreeNode(stoi(s));
+        
+        
+        root->left=makeTree(q);
+        root->right=makeTree(q);
+        
         return root;
+    }
+   
+    
+    TreeNode* deserialize(string data) {
+        queue<string>q;
+        
+        string s="";
+        
+        for(int i=0;i<data.size();i++){
+            if(data[i]=='X')q.push("X");
+              else if(data[i]==','){
+                  q.push(s);
+                  s="";
+              }
+            else{
+                s+=data[i];
+            }
+        }
+        
+        TreeNode* ans=makeTree(q);
+        return ans;
     }
 };
 
