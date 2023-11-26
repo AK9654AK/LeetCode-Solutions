@@ -18,18 +18,13 @@ public:
         
         if(root==NULL)return 0;
         
-        
         kthSmallest(root->left,k);
         {
             count++;
             if(count==k)ans=root->val;
-            
         }
-        
         kthSmallest(root->right,k);
-   
         
-         return ans;
+        return ans;
     }
-    
 };
