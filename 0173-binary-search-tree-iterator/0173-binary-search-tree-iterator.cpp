@@ -12,33 +12,26 @@
 class BSTIterator {
 public:
     stack<TreeNode*>st;
+    void pusher(TreeNode* temp){
+        while(temp){
+            st.push(temp);
+            temp=temp->left;
+        }
+    }
     BSTIterator(TreeNode* root) {
-             
-      pusher(root);
+       pusher(root); 
     }
     
-    int next(){
-        
+    int next() {
         TreeNode* it=st.top();
         st.pop();
         pusher(it->right);
         return it->val;
-        
-        
-        
     }
-    
-    void pusher(TreeNode* root){
-        while(root){
-            st.push(root);
-            root=root->left;
-        }
-    }
-    
     
     bool hasNext() {
-        if(st.size()==0)return false;
-        else return true;
+        if(st.empty())return false;
+        return true;
     }
 };
 
